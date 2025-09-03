@@ -53,7 +53,10 @@ def Reset():
     Text.set("")
     private_key.set("")
     Result.set("")
-
+def CopyResult():
+    root.clipboard_clear()
+    root.clipboard_append(Result.get())
+    messagebox.showinfo("Copied", "Result copied to clipboard!")
 # Exit function
 def Exit():
     root.quit()
@@ -82,5 +85,9 @@ Entry(root, textvariable=Result, width=50, font=("Arial", 10), state="readonly")
 Button(root, text="Process", width=10, command=Process, bg="#4CAF50", fg="white", font=("Arial", 10, "bold")).grid(row=5, column=0, pady=20, padx=10)
 Button(root, text="Reset", width=10, command=Reset, bg="#FFC107", font=("Arial", 10, "bold")).grid(row=5, column=1, pady=20)
 Button(root, text="Exit", width=10, command=Exit, bg="#F44336", fg="white", font=("Arial", 10, "bold")).grid(row=5, column=2, pady=20)
+Button(root, text="Copy", width=10, command=CopyResult, bg="#2196F3", fg="white", font=("Arial", 10, "bold")).grid(row=6, column=1, pady=10)  # NEW
+
+
+
 
 root.mainloop()
